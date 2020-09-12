@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../static/css/Login.css";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,6 +18,18 @@ const Login = () => {
 
   const submit = (e) => {
     e.preventDefault();
+    const { accountInfo } = props;
+    const finduser = accountInfo.find(
+      (item) =>
+        item.email.toLowerCase() === email.toLowerCase() &&
+        item.password.toLowerCase() === password.toLowerCase()
+    );
+    if (finduser) {
+      localStorage.setItem("user", JSON.stringify(finduser));
+      props.history.push("/myspace");
+    } else {
+      alert("Email/Password error or can not find this user")
+    }
   };
 
   return (
@@ -69,4 +83,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  accountInfo: state.accReducer.account,
+});
+
+export default withRouter(connect(mapStateToProps, null)(Login));

@@ -2,10 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../static/css/Logout.css";
 import avatar from "../static/icons/avatar.png";
+import {withRouter} from "react-router-dom" 
 
-const Logout = () => {
+const Logout = (props) => {
   const submit = (e) => {
     e.preventDefault();
+    localStorage.clear();
+    props.history.push("/")
   };
 
   return (
@@ -34,4 +37,4 @@ const Logout = () => {
   );
 }
 
-export default Logout;
+export default  withRouter(Logout);

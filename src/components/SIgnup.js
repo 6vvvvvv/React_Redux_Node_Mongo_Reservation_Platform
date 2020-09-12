@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../static/css/Signup.css";
+import { connect } from "react-redux";
+import { addUser } from "../components/redux/Account/action-creator/acc-actionCreators";
+import { withRouter } from "react-router-dom";
 
-const SIgnup = () => {
+const SIgnup = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +22,34 @@ const SIgnup = () => {
     setPassword(e.target.value);
   };
 
-    const submit = (e) => {
-      e.preventDefault();
-    };
+  const submit = (e) => {
+    e.preventDefault();
+    const { adduser, accountInfo } = props;
 
+    if (accountInfo.length === 0) {
+      adduser({
+        username: username.toLowerCase(),
+        email: email.toLowerCase(),
+        password: password.toLowerCase(),
+      });
+      props.history.push("/login");
+    } else {
+      const finduser = accountInfo.find(
+        (item) => item.email.toLowerCase() === email.toLowerCase()
+      );
+
+      if (finduser) {
+        alert("User exists, please login");
+      } else {
+        adduser({
+          username: username.toLowerCase(),
+          email: email.toLowerCase(),
+          password: password.toLowerCase(),
+        });
+        props.history.push("/login");
+      }
+    }
+  };
 
   return (
     <div className="row signup-form">
@@ -38,7 +65,7 @@ const SIgnup = () => {
               value={username}
               onChange={usernamehandler}
             />
-            <label for="email">Email</label>
+            <label for="email">Username</label>
           </div>
         </div>
         <div className="row">
@@ -87,4 +114,12 @@ const SIgnup = () => {
   );
 };
 
-export default SIgnup;
+const mapStateToProps = (state) => ({
+  accountInfo: state.accReducer.account,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  adduser: (payload) => dispatch(addUser(payload)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SIgnup));

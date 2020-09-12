@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import Todocard from "../components/Todo/Todocard";
 import Profilecard from "./Profilecard";
 import profileimg from "../static/icons/avatar.png";
-
+import { withRouter } from "react-router-dom";
 
 const state = {
   labels: ["Bien-etre", "Sport", "Medecine douce", "Culture", "Conciergerie"],
@@ -28,11 +28,17 @@ const state = {
   ],
 };
 
-const Myspace = () => {
+const Myspace = (props) => {
   let today = new Date();
   const [date, setDate] = useState(today);
 
   const onChange = (date) => setDate(date);
+
+  useEffect(() => {
+    if (localStorage.length === 0) {
+      props.history.push("/login");
+    }
+  }, []);
 
   useEffect(() => {
     var elems = document.querySelectorAll(".carousel");
@@ -44,19 +50,34 @@ const Myspace = () => {
       <div className="carousel-section">
         <div className="carousel carousel-slider">
           <Link className="carousel-item" to="#one!">
-            <img src="https://s8.gifyu.com/images/carousel1.jpg" alt="carousel1" />
+            <img
+              src="https://s8.gifyu.com/images/carousel1.jpg"
+              alt="carousel1"
+            />
           </Link>
           <Link className="carousel-item" to="#two!">
-            <img src="https://s8.gifyu.com/images/carousel2.jpg" alt="carousel2" />
+            <img
+              src="https://s8.gifyu.com/images/carousel2.jpg"
+              alt="carousel2"
+            />
           </Link>
           <Link className="carousel-item" to="#three!">
-            <img src="https://s8.gifyu.com/images/carousel3.jpg" alt="carousel3" />
+            <img
+              src="https://s8.gifyu.com/images/carousel3.jpg"
+              alt="carousel3"
+            />
           </Link>
           <Link className="carousel-item" to="#four!">
-            <img src="https://s8.gifyu.com/images/carousel4.jpg" alt="carousel4" />
+            <img
+              src="https://s8.gifyu.com/images/carousel4.jpg"
+              alt="carousel4"
+            />
           </Link>
           <Link className="carousel-item" to="#five!">
-            <img src="https://s8.gifyu.com/images/carousel5.jpg" alt="carousel5" />
+            <img
+              src="https://s8.gifyu.com/images/carousel5.jpg"
+              alt="carousel5"
+            />
           </Link>
         </div>
       </div>
@@ -67,7 +88,11 @@ const Myspace = () => {
         </div>
         <div className="profile-section col">
           <div className="profile-inner-section"></div>
-          <Profilecard img={profileimg} name={"LIU WEI"} designation={"designer"}/>
+          <Profilecard
+            img={profileimg}
+            name={"LIU WEI"}
+            designation={"designer"}
+          />
         </div>
       </div>
 
@@ -96,4 +121,4 @@ const Myspace = () => {
   );
 };
 
-export default Myspace;
+export default withRouter(Myspace);
