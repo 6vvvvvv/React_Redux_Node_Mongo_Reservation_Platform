@@ -1,0 +1,25 @@
+ul.sidenav {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  float: left;
+}
+
+ul.sidenav li:first-child {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+ul.sidenav li a:hover:not(.active) {
+  background-color: #e7e9f0;
+}
+
+ul.sidenav li a {
+  font-family: Poppins, sans-serif;
+  font-size:20px
+}
+
+img.logo{
+  width:100px;
+  height: 50px;
+}

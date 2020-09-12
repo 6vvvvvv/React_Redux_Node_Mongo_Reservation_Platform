@@ -1,0 +1,12 @@
+.sport-container {
+  opacity: 0;
+}
+
+.sport-container.visible {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 150px 310px 0 310px;
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}

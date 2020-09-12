@@ -1,0 +1,20 @@
+img.home-page-logo {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  z-index: 1;
+  left: 30%;
+  top: 150px;
+}
+
+.home-page-fade-in {
+  opacity: 0;
+}
+
+.home-page-fade-in.visible {
+  transition: opacity 2s ease-in;
+  opacity: 1;
+
+}
+
+

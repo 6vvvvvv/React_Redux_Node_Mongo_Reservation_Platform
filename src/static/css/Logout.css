@@ -1,0 +1,36 @@
+.log-out-form {
+  position: absolute;
+  left: 50%;
+  top: 250px;
+  margin-left: -200px;
+  padding: 80px;
+  box-shadow: 5px 5px 5px 5px lightgray;
+}
+
+i.exit_to_app {
+  position: absolute;
+  font-size: 40px;
+  left: 50%;
+  margin-left: -20px;
+  top: 40px;
+}
+
+.logout-btn {
+  width: 92%;
+  margin-left: 10px;
+  background-color: blue;
+}
+
+.return-home {
+  text-align: center;
+}
+
+.logout-btn-section {
+  margin-top: 30px;
+}
+
+img.avatar-icon{
+    margin-top: 40px;
+    width: 200px;
+    height: 200px;
+}
