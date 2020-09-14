@@ -1,10 +1,7 @@
 import { ADD, DELETE, MARKDONE } from "../action-types/todo-actionTypes";
 
 const initialState = {
-  todolist: [
-    { id: 1, task: "running", done: false },
-    { id: 2, task: "running2", done: false },
-  ],
+  todolist: [{ id: 1, task: "default task for test", done: false }],
 };
 
 export default (state = initialState, action) => {
@@ -14,7 +11,11 @@ export default (state = initialState, action) => {
         ...state,
         todolist: [
           ...state.todolist,
-          { id: state.todolist.length + 1, task: action.payload, done: false },
+          {
+            id: state.todolist.length + 1,
+            task: action.payload,
+            done: false,
+          },
         ],
       };
     case DELETE:
@@ -22,7 +23,7 @@ export default (state = initialState, action) => {
         (item) => item.id !== action.payload
       );
 
-      return { ...state, todolist: newtodolist};
+      return { ...state, todolist: newtodolist };
 
     case MARKDONE:
       const marktodolist = state.todolist.map((todo) =>

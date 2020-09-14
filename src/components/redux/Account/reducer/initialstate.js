@@ -1,0 +1,41 @@
+export const initialstate = {
+  account: [
+    {
+      username: "LINDA",
+      email: "LINDA@GMAIL.COM",
+      password: "123456",
+      img: "https://s8.gifyu.com/images/LINDA.jpg",
+      joinactivity: ["jogging", "football"],
+      todo: [],
+      count: { sport: { jogging: 1, swim: 0, basketball: 0, football: 1 } },
+    },
+    {
+      username: "LAWRENCE",
+      email: "LAWRENCE@GMAIL.COM",
+      password: "123456",
+      img: "https://s8.gifyu.com/images/LAWRENCE.jpg",
+      joinactivity: ["jogging", "swim"],
+      todo: [],
+      count: { sport: { jogging: 1, swim: 1, basketball: 0, football: 0 } },
+    },
+    {
+      username: "KEN",
+      email: "KEN@GMAIL.COM",
+      password: "123456",
+      img: "https://s8.gifyu.com/images/KEN.jpg",
+      joinactivity: ["jogging", "basketball"],
+      todo: [],
+      count: { sport: { jogging: 1, swim: 0, basketball: 1, football: 0 } },
+    },
+    {
+      username: "STEPHEN",
+      email: "STEPHEN@GMAIL.COM",
+      password: "123456",
+      img: "https://s8.gifyu.com/images/STEPHEN.jpg",
+      joinactivity: ["jogging", "swim"],
+      todo: [],
+      count: { sport: { jogging: 1, swim: 1, basketball: 0, football: 0 } },
+    },
+  ],
+  loggedin: false,
+};

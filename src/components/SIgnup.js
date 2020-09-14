@@ -65,7 +65,7 @@ const SIgnup = (props) => {
               value={username}
               onChange={usernamehandler}
             />
-            <label for="email">Username</label>
+            <label htmlFor="email">Username</label>
           </div>
         </div>
         <div className="row">
@@ -78,7 +78,7 @@ const SIgnup = (props) => {
               value={email}
               onChange={emailhandler}
             />
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
           </div>
         </div>
         <div className="row">
@@ -91,7 +91,7 @@ const SIgnup = (props) => {
               value={password}
               onChange={passwordhandler}
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
         </div>
         <div className="row">

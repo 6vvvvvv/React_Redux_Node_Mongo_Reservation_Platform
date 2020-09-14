@@ -1,13 +1,13 @@
 import React from "react";
 import commingsoon from "../static/icons/coming-soon.png";
-import "../static/css/Medecin.css"
+import "../static/css/Bienetre.css";
 
-const Medecine = () => {
+const Bienetre = () => {
   return (
-    <div className="medecin-container">
+    <div className="bienetre-container">
       <img src={commingsoon} className="commingsoon" alt="commingsoon"></img>
     </div>
   );
 };
 
-export default Medecine;
+export default Bienetre;

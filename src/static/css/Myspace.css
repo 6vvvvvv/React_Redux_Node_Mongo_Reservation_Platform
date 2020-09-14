@@ -1,4 +1,4 @@
-.my-space {
+.my-space  {
   position: relative;
   display: block;
   background-size: 100% 100%;
@@ -6,6 +6,7 @@
   box-shadow: 10px 10px 10px 10px lightgrey;
   border-radius: 20px;
 }
+
 
 .carousel {
   width: 100%;

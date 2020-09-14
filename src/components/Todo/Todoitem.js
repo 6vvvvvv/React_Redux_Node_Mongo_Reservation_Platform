@@ -6,8 +6,6 @@ import {
   markItem,
 } from "../redux/Todo/action-creator/todo-actionCreators";
 
-
-
 const Todoitem = (props) => {
   const deleteHandler = (id) => {
     props.deleteitemfromstore(id);
@@ -16,7 +14,6 @@ const Todoitem = (props) => {
     props.markIteminstore(id);
   };
 
-
   return (
     <ul className="todo-list-item">
       <li
@@ -24,7 +21,6 @@ const Todoitem = (props) => {
         onClick={() => togglehandler(props.item.id)}
         onDoubleClick={() => deleteHandler(props.item.id)}
         key={props.item.id}
-
       >
         {props.item.done ? (
           <div className="done">
@@ -33,7 +29,7 @@ const Todoitem = (props) => {
           </div>
         ) : (
           <div className="undone">
-            <i class="far fa-times-circle "></i>{" "}
+            <i className="far fa-times-circle "></i>{" "}
             <span className="undone-span"> {props.item.task}</span>
           </div>
         )}

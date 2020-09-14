@@ -1,0 +1,2 @@
+export const USERRESERVE = 'USERRESERVE'
+export const USERCANCEL = 'USERCANCEL'

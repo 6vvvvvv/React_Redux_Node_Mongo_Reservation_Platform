@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../static/css/Login.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import {setLoggedin} from "./redux/Account/action-creator/acc-actionCreators"
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -26,9 +27,10 @@ const Login = (props) => {
     );
     if (finduser) {
       localStorage.setItem("user", JSON.stringify(finduser));
-      props.history.push("/myspace");
+      props.setloginstaus()
+      props.history.push("/");
     } else {
-      alert("Email/Password error or can not find this user")
+      alert("Email/Password error or can not find this user");
     }
   };
 
@@ -46,7 +48,7 @@ const Login = (props) => {
               value={email}
               onChange={emailhandler}
             />
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
           </div>
         </div>
         <div className="row">
@@ -59,7 +61,7 @@ const Login = (props) => {
               value={password}
               onChange={passwordhandler}
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
         </div>
         <div className="row">
@@ -87,4 +89,11 @@ const mapStateToProps = (state) => ({
   accountInfo: state.accReducer.account,
 });
 
-export default withRouter(connect(mapStateToProps, null)(Login));
+
+
+const mapDispatchToProps = (dispatch)=>({
+  setloginstaus:()=>dispatch(setLoggedin())
+})
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

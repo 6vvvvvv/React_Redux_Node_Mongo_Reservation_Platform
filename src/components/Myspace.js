@@ -9,41 +9,75 @@ import Todocard from "../components/Todo/Todocard";
 import Profilecard from "./Profilecard";
 import profileimg from "../static/icons/avatar.png";
 import { withRouter } from "react-router-dom";
-
-const state = {
-  labels: ["Bien-etre", "Sport", "Medecine douce", "Culture", "Conciergerie"],
-  datasets: [
-    {
-      label: "Activity",
-      backgroundColor: ["#B21F00", "#C9DE00", "#2FDE00", "#00A6B4", "#6800B4"],
-      hoverBackgroundColor: [
-        "#501800",
-        "#4B5000",
-        "#175000",
-        "#003350",
-        "#35014F",
-      ],
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
-};
+import { connect } from "react-redux";
 
 const Myspace = (props) => {
+  const [sportcount, setSportcount] = useState(0);
+
   let today = new Date();
   const [date, setDate] = useState(today);
 
-  const onChange = (date) => setDate(date);
+  const state = {
+    labels: ["Sport", "Bien-etre", "Medecine douce", "Culture", "Conciergerie"],
+    datasets: [
+      {
+        label: "Activity",
+        backgroundColor: [
+          "#B21F00",
+          "#C9DE00",
+          "#2FDE00",
+          "#00A6B4",
+          "#6800B4",
+        ],
+        hoverBackgroundColor: [
+          "#501800",
+          "#4B5000",
+          "#175000",
+          "#003350",
+          "#35014F",
+        ],
+        data: [sportcount, 1, 2, 3, 2],
+      },
+    ],
+  };
 
   useEffect(() => {
     if (localStorage.length === 0) {
       props.history.push("/login");
     }
-  }, []);
+  }, [ props.history]);
 
   useEffect(() => {
     var elems = document.querySelectorAll(".carousel");
     C.Carousel.init(elems, { indicators: true });
   }, []);
+
+  const onChange = (date) => setDate(date);
+
+  const localuser = JSON.parse(localStorage.getItem("user"));
+  const activeuser = localuser.username;
+
+  let count = 0;
+
+  const findUserInAcc = props.userInfo.find(
+    (item) => item.username === activeuser
+  );
+
+  count =
+    findUserInAcc.count.sport.jogging +
+    findUserInAcc.count.sport.swim +
+    findUserInAcc.count.sport.football +
+    findUserInAcc.count.sport.basketball;
+
+  useEffect(() => {
+    setSportcount(count);
+  }, [
+    count,
+    findUserInAcc.count.sport.jogging,
+    findUserInAcc.count.sport.swim,
+    findUserInAcc.count.sport.football,
+    findUserInAcc.count.sport.basketball,
+  ]);
 
   return (
     <div className="my-space container">
@@ -90,7 +124,7 @@ const Myspace = (props) => {
           <div className="profile-inner-section"></div>
           <Profilecard
             img={profileimg}
-            name={"LIU WEI"}
+            name={activeuser}
             designation={"designer"}
           />
         </div>
@@ -121,4 +155,8 @@ const Myspace = (props) => {
   );
 };
 
-export default withRouter(Myspace);
+const mapStateToProps = (state) => ({
+  userInfo: state.accReducer.account,
+});
+
+export default withRouter(connect(mapStateToProps, null)(Myspace));

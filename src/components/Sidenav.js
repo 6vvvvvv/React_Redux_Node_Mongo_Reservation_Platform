@@ -13,13 +13,13 @@ const Sidenav = () => {
           </Link>
         </li>
         <li>
-          <Link to="/" className="pulse">
-            Bien-etre
+          <Link to="/sport" className="pulse">
+            Sport
           </Link>
         </li>
         <li>
-          <Link to="/sport" className="pulse">
-            Sport
+          <Link to="/bienetre" className="pulse">
+            Bien-etre
           </Link>
         </li>
         <li>

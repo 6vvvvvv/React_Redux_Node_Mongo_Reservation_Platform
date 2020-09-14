@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../static/css/Logout.css";
 import avatar from "../static/icons/avatar.png";
-import {withRouter} from "react-router-dom" 
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { setLoggedin } from "./redux/Account/action-creator/acc-actionCreators";
 
 const Logout = (props) => {
   const submit = (e) => {
     e.preventDefault();
     localStorage.clear();
-    props.history.push("/")
+    props.clearloggedin();
+    props.history.push("/");
   };
 
   return (
@@ -35,6 +38,10 @@ const Logout = (props) => {
       </form>
     </div>
   );
-}
+};
 
-export default  withRouter(Logout);
+const mapDispatchToProps = (dispatch) => ({
+  clearloggedin: () => dispatch(setLoggedin()),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(Logout));

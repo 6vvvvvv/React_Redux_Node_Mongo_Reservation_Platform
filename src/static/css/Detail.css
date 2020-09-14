@@ -51,6 +51,13 @@ img.detail-img {
   height: 315px;
 }
 
+button.confirm-cancel-btn{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: blue;
+}
+
 div.detail-description {
   display: flex;
 }
@@ -58,44 +65,76 @@ div.detail-description {
 div.detail-description div.book {
   width: 25%;
   height: 121px;
-  background: purple;
+  background: blue;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 div.detail-description div.content {
-  width: 50%;
+  width: 35%;
   height: 121px;
-  background: white;
-  border-right:1px solid lightgrey;
+  background: lightskyblue;
+  /* border-right: 1px solid lightgrey; */
 }
 
 div.detail-description div.paticipant {
-  width: 25%;
+  width: 40%;
   height: 121px;
   background: white;
 }
 
-span.detail-calendar-container{
+span.detail-calendar-container {
   display: block;
 }
 
-
-i.detail-calendar-icon{
+i.detail-calendar-icon {
   color: white;
   font-size: 50px;
 }
 
-ul.content-list{
+ul.content-list {
   list-style-type: none;
   padding-left: 20px;
 }
 
-ul.content-list li:not(.chip-item){
-  margin-top:5px
+ul.content-list li:not(.chip-item) {
+  margin-top: 5px;
 }
 
-span.chip{
+span.chip {
   margin-left: 10px;
+}
+
+div.paticipant-icon {
+  margin-left: 20px;
+  margin-top:20px;
+  display: block;
+}
+
+i.participants {
+ font-size: 20px;
+}
+
+i.participants{
+  font-size: 20px;
+ }
+ 
+
+img.participants-confirm-img {
+  border-radius: 50%;
+  margin-top:10px
+}
+
+div.paticipants-img-container{
+  margin-left:20px
+}
+
+span.time, span.tool{
+ margin-left: 20px;
+}
+
+span.participant-count{
+  font-size: 15px;
+  font-weight: bold;
 }

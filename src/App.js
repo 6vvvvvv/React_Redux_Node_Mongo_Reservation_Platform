@@ -14,6 +14,7 @@ import Culture from "./components/Culture";
 import Conciergerie from "./components/Conciergerie";
 import Sidenav from "./components/Sidenav";
 import Detail from "./components/Detail";
+import Bienetre from "./components/Bienetre"
 
 const App = () => {
   return (
@@ -28,10 +29,11 @@ const App = () => {
         <Route path="/signup" component={SIgnup} />
         <Route path="/myspace" component={Myspace} />
         <Route path="/sport" component={Sport} />
+        <Route path="/bienetre" component={Bienetre} />
         <Route path="/medecinedouce" component={Medecine} />
         <Route path="/culture" component={Culture} />
         <Route path="/conciergerie" component={Conciergerie} />
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/:category/:type" component={Detail} />
       </Switch>
     </Router>
   );
