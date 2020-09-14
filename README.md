@@ -3,7 +3,8 @@
 # Must Know Before You Deploy in Your PC
 ## 1.Data flow is logged in console for every step, any infos please check your browser console.
 ## 2.Certain datas are applied in local store in order to be more lisible, personalize the data is at your service.
-## 3.Only Categore Sport is available for the time being.
+## 3.Only Category sport is available for the time being.
+## 4.Bugs exist but still so far so good. 
 
 # Try it yourself
 https://bien-etre-reservation.web.app/
